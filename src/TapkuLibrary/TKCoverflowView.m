@@ -243,13 +243,21 @@
 	
 	int i = currentIndex-1;
 	if (i >= 0) 
-		for(;i > deck.location;i--) 
-			[self sendSubviewToBack:[coverViews objectAtIndex:i]];
+		for(;i > deck.location;i--)
+        {
+            UIView *v = [coverViews objectAtIndex:i];
+            if((NSObject*)v != [NSNull null])
+                [self sendSubviewToBack:v];
+        }
 	
 	i = currentIndex+1;
 	if(i<numberOfCovers-1) 
-		for(;i < deck.location+deck.length;i++) 
-			[self sendSubviewToBack:[coverViews objectAtIndex:i]];
+		for(;i < deck.location+deck.length;i++)
+        {
+            UIView *v = [coverViews objectAtIndex:i];
+            if((NSObject*)v != [NSNull null])
+                [self sendSubviewToBack:v];
+        }
 	
 	UIView *v = [coverViews objectAtIndex:currentIndex];
 	if((NSObject*)v != [NSNull null])
